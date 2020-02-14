@@ -7,7 +7,7 @@ Website that allows you to check if a certain medicine or suppliment is availabl
 Active / In Development
 # Support
 For any questions, or help regarding this project, please contact any one of the developers:
-# 
+<br />
 christina.aouad@lau.edu
 youssef.abboud01@lau.edu
 georges.younes@lau.edu
