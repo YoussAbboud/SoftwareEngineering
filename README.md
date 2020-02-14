@@ -1,6 +1,6 @@
 # SoftwareEngineering
 Repo Containing all the tools and information used in the Software Engineering Project
-CSC 490
+<br />CSC 490
 # Description
 Website that allows you to check if a certain medicine or suppliment is available at Pharmacie Rahbani
 # Project Status
