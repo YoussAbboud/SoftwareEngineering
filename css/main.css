@@ -1,0 +1,190 @@
+@media (min-width: 992px) {
+    .animate {
+      animation-duration: 0.2s;
+      -webkit-animation-duration: 0.2s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform:translateY(0rem);
+      opacity: 1;
+    }
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+  }
+
+  
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }
+  
+  /* Other styles for the page not related to the animated dropdown */
+  
+  body {
+    
+    background: #D5F5E3
+    
+  }
+
+  input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  /* When the input field gets focus, change its width */
+  input[type=text]:hover 
+  {
+    width: 200px;
+  }
+
+  .navbar {
+    min-height: 80px;
+  
+  }
+
+  .nav-item{
+    margin-right: 20px;
+  }
+
+  .footer-heading{
+    margin-top: 20px;
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+     /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: rgb(46, 194, 46);
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  #img1{
+    margin-right: 10px;
+  }
+
+  @import "compass/css3";
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+@import url(https://fonts.googleapis.com/css?family=Lato:900&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:700i&display=swap);
+
+*, 
+*:before, 
+*:after {
+   box-sizing: border-box; 
+}
+
+html, body {
+  background: #f1f1f1;
+}
+
+h1 {
+   text-align: center;
+   text-shadow: (1px 1px 0 rgba(black, 1));
+}
+
+form {
+   max-width: 600px;
+   text-align: center;
+   margin: 10px auto;
+}
+
+  input, textarea {
+     border:0; outline:0;
+     padding: 1em;
+     border-radius: 4px;
+     display: block;
+     width: 100%;
+     margin-top: 1em;
+     font-family: 'Merriweather', sans-serif;
+     box-shadow: (0 1px 1px rgba(black, 0.1));
+     resize: none;
+     font-family: 'Lato';
+    
+  }
+
+input[type=submit]{
+  background-color: black;
+  font-family: 'Noto Sans';
+  color: white;
+  width: 200px;
+}
+
+footer{
+  font-family: 'Noto Sans';
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+.btn{
+  background-color: rgb(46, 194, 46);
+  border-color:  rgb(46, 194, 46);
+  font-family: 'Merriweather';
+}
+
+li > a{
+  color: rgb(46, 194, 46);
+}
