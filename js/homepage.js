@@ -1,3 +1,8 @@
+$(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 1500
+    })
+
 (function(){
     "use strict";
 /*
@@ -12,3 +17,11 @@ $('.nav a').click(function() {
 })();
 
 
+$(document).getElementById("shop-btn").onclick = function(){
+
+    
+    
+}
+
+
+})
