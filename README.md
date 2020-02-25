@@ -9,6 +9,8 @@ Active / In Development
 For any questions, or help regarding this project, please contact any one of the developers:
 <br />
 christina.aouad@lau.edu
+</br>
 youssef.abboud01@lau.edu
+</br>
 georges.younes@lau.edu
 
