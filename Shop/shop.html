@@ -34,10 +34,8 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div class="container">
-      <a class="navbar-brand mx-auto" href="#"
-        style="color: black; font-weight: bold; font-family: 'Roboto', sans-serif; font-size: 25px;"> <img  src="../img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand mx-auto" href="#" style="color: black; font-weight: bold; font-family: 'Roboto', sans-serif; font-size: 25px;"> <img src="../img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
@@ -46,19 +44,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.html" style="color: black">
+            <a class="nav-link" href="../index.html" style="color: black; ">
               Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="/Shop/shop.html" style="color: black; font-weight: bold;"> Shop </a>
+            <a class="nav-link disabled" href="#" style="color: black; font-weight: bold;"> Shop </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false" style="color: black">
               Items
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+            <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Supplements</a>
               <a class="dropdown-item" href="#">Vitamins</a>
               <div class="dropdown-divider"></div>
@@ -77,23 +75,37 @@
         </ul>
       </div>
 
-    </div>
+<div class="container">
 
-    <div class="container">
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <input type="text" placeholder="Search">
+            <input type="search" placeholder="Search" style="font-family: Noto Sans;">
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="color: black">
+              <i class="fas fa-user" style="margin-top: 25px;"></i>
+            </a>
+
+            <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+              <input type="text" id="i-email" class="dropdown-item" placeholder="Email">
+              <input type="password" id="i-password" class="dropdown-item" placeholder="Password">
+            </div>
           </li>
         </ul>
       </div>
 
+
     </div>
+
+    </div>
+
+    
 
     </div>
     </div>
   </nav>
-
  
 
   <footer>
