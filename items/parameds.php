@@ -1,3 +1,6 @@
+<?php
+ require("../connection/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +21,7 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="../css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -36,7 +39,7 @@
     <div class="container">
       <a class="navbar-brand mx-auto" href="#"
         style="color: black; font-weight: bold; font-family: 'Roboto', sans-serif; font-size: 25px;"> <img
-          src="./img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
+          src="../img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -47,20 +50,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link disabled" href="index.html" style="color: black; font-weight: bold;">
+            <a class="nav-link" href="index.html" style="color: black">
               Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Shop/shop.php" style="color: black;"> Shop </a>
+            <a class="nav-link" href="../Shop/shop.php" style="color: black;"> Shop </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" style="color: black">
+              aria-expanded="false" style="color: black ; font-weight: bold;">
               Items
             </a>
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="./items/parameds.php">Para Medicals</a>
+              <a class="dropdown-item  disabled" href="parameds.php">Para Medicals</a>
               <a class="dropdown-item" href="#">Baby products</a>
               <a class="dropdown-item" href="#">Baby Toiletries</a>
               <a class="dropdown-item" href="#">Dental Products</a>
@@ -71,10 +74,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./about/about.html" style="color: black;"> About </a>
+            <a class="nav-link" href="../about/about.html" style="color: black;"> About </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contact/contact.php" style="color: black;"> Contact </a>
+            <a class="nav-link" href="../contact/contact.php" style="color: black;"> Contact </a>
           </li>
 
 
@@ -111,29 +114,70 @@
     </div>
     </div>
   </nav>
-
-  <div class="cover-container" >
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-7 mx-auto order-lg-2 align-self-center" style="margin-top: 20px; background-image: url('img/inside3.jpeg'); height: 550px;">
-          <div class="cover-content text-center">
-            <h2 class="sub-title" style="font-family: 'Noto sans' ; font-weight: bold; margin-top: 190px;">Effective, Fast and Reliable
-              Everyday
-            </h2>
-            <h1 style="font-family: 'Noto Sans', sans-serif;">Welcome To Rahbani</h1>
-            <p>
-              <a href="./Shop/shop.php" class="btn btn-primary px-5 py-3">Shop Now</a>
-            </p>
+<div class="container-fluid" style="border-radius: 5px ; margin-bottom: 30px ; margin-top: 15px">
+    <div class="row">
+        <div class="col-lg-6 col-sm-2" >
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="../img/unnamed.jpg" alt="First slide"  style="border-radius: 5px">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="../img/inside5.jpg" alt="Second slide"  style="border-radius: 5px">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="../img/random1.jpg" alt="Third slide"  style="border-radius: 5px">
+            </div>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <div class="col-lg-3 mx-auto order-lg-2 align-self-center">
+</div>
+</div>
+</div>
 
+<?php
 
-        </div>
-      </div>
+$sql = 'SELECT descpt, brand, qty, price FROM para_medicals';
+$result = mysqli_query($connection , $sql);
+
+?>
+
+<p style="font-weight: bold ; font-family: 'Roboto' ; margin-top: 10px">&nbsp &nbsp &nbsp Para Medicals</p>
+      <div class="container-fluid">
+      <div class="row">
+      <?php while($rows = mysqli_fetch_assoc($result))
+                                {
+                        ?>
+                        <div class="col-lg-3 col-sm-4">
+
+<div class="card text-center" style="height: 380px ; width: 300px ; margin-top:15px">
+<img class="card-img-top align-center" src="../img/dettol.jpeg" alt="Card image" style="height: 200xp ; width: 200px; margin-left: 50px">
+
+    <div class="card-body text-center">
+        <tr>
+            
+        <input type=hidden name="description" value="<?php echo $rows['descpt']; ?>"/>
+                      <?php echo $rows['descpt']; ?></br>
+  
+                          <td><?php echo $rows['brand']?></td></br>
+                          <td>Quantity:</t> <?php echo $rows['qty'] ?></td></br>
+                          <td>Price: </t><?php echo $rows['price'] ?></td> LBP</br>
+                      </tr>
     </div>
-  </div>
-
+</div>
+</div>
+<?php
+                                }
+                            ?>
+</div>
+</div>
 
   <footer>
     <div class="container-fluid bg-light">
