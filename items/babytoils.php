@@ -29,7 +29,7 @@ session_start();
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://kit.fontawesome.com/58f469af82.js" crossorigin="anonymous"></script>
-  <script src="../js/homepage.js" type="text/javascript"></script>
+  <script src="js/homepage.js" type="text/javascript"></script>
 
   <title>Pharmacy Rahbani</title>
 
@@ -51,19 +51,8 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-          <?php if(isset($_SESSION['email']))
-      {
-        ?>
-  <a class="nav-link" href="../index2.php" style="color: black; ">
+            <a class="nav-link" href="../index.php" style="color: black">
               Home </a>
-
-<?php } 
-
-      else
-      { ?>
-            <a class="nav-link" href="../index.php" style="color: black; ">
-              Home </a>
-      <?php } ?>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Shop/shop.php" style="color: black;"> Shop </a>
@@ -77,9 +66,9 @@ session_start();
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="parameds.php">Para Medicals</a>
               <a class="dropdown-item" href="babyprods.php">Baby products</a>
-              <a class="dropdown-item" href="babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item  disabled" href="babytoils.php">Baby Toiletries</a>
               <a class="dropdown-item" href="dental.php">Dental Products</a>
-              <a class="dropdown-item disabled" href="sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="sportnut.php">Sport Nutrition</a>
               <a class="dropdown-item" href="cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="supplements.php">Supplements</a>
@@ -136,12 +125,12 @@ session_start();
 
 <?php
 
-$sql = 'SELECT id , descpt, brand, qty, price , logo FROM para_medicals';
+$sql = 'SELECT descpt, brand, qty, price , logo FROM baby_toiletries';
 $result = mysqli_query($connection , $sql);
 
 ?>
 
-
+<p style="font-weight: bold ; font-family: 'Roboto' ; margin-top: 10px">&nbsp &nbsp &nbsp Para Medicals</p>
       <div class="container-fluid">
       <div class="row">
       <?php while($rows = mysqli_fetch_assoc($result))
@@ -151,13 +140,12 @@ $result = mysqli_query($connection , $sql);
                                      ?>    
                         <div class="col-lg-3 col-sm-4">
 
-                        <div class="card text-center" style="height: 400px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+                        <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
                         <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 170px ; width: 190px ; margin-left: 15px ; margin-top: 10px">
 
     <div class="card-body text-center">
         <tr>
-            
-        <form method="POST" action="pitem.php">
+        <form method="POST" action="btitem.php">
         <input type=hidden name="itemid" value="<?php echo $rows['id']; ?>"/>
                       <?php echo $rows['descpt']; ?></br>
   
@@ -167,7 +155,7 @@ $result = mysqli_query($connection , $sql);
                           <button class="btn btn-outline-success my-2 my-sm-0 btt_submit" type="submit">View Item</button>
                                
                         </tr>
-                                </form>                
+                                </form>
     </div>
 </div>
 </div>
@@ -176,7 +164,6 @@ $result = mysqli_query($connection , $sql);
                             ?>
 </div>
 </div>
-
 
   <footer>
     <div class="container-fluid bg-light">

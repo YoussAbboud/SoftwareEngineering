@@ -79,7 +79,7 @@ session_start();
               <a class="dropdown-item" href="babyprods.php">Baby products</a>
               <a class="dropdown-item" href="babytoils.php">Baby Toiletries</a>
               <a class="dropdown-item" href="dental.php">Dental Products</a>
-              <a class="dropdown-item disabled" href="sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="sportnut.php">Sport Nutrition</a>
               <a class="dropdown-item" href="cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="supplements.php">Supplements</a>
@@ -131,21 +131,19 @@ session_start();
           </a>
         </div>
 </div>
-</div>
-</div>
+
 
 <?php
 
-$sql = 'SELECT id , descpt, brand, qty, price , logo FROM para_medicals';
+$i_id = $_POST['itemid'];
+
+$sql = "SELECT * FROM para_medicals WHERE id = $i_id";
 $result = mysqli_query($connection , $sql);
 
 ?>
 
-
-      <div class="container-fluid">
-      <div class="row">
-      <?php while($rows = mysqli_fetch_assoc($result))
-                                {
+      <?php $rows = mysqli_fetch_assoc($result);
+                                
                                   $image_fields =  trim($rows['logo']);
                                   $image_show = "../img/$image_fields"
                                      ?>    
@@ -157,25 +155,23 @@ $result = mysqli_query($connection , $sql);
     <div class="card-body text-center">
         <tr>
             
-        <form method="POST" action="pitem.php">
-        <input type=hidden name="itemid" value="<?php echo $rows['id']; ?>"/>
+        
+        <input type=hidden name="itemid" id="item_id" value="<?php echo $rows['id']; ?>"/>
                       <?php echo $rows['descpt']; ?></br>
   
                           <td><?php echo $rows['brand']?></td></br>
                           <td>Quantity:</t> <?php echo $rows['qty'] ?></td></br>
                           <td>Price: </t><?php echo $rows['price'] ?></td> LBP</br>
-                          <button class="btn btn-outline-success my-2 my-sm-0 btt_submit" type="submit">View Item</button>
+                          <td><button class="btn" onClick="reservation_p()">Reserve</button></td>
                                
                         </tr>
-                                </form>                
+                                               
     </div>
 </div>
 </div>
-<?php
-                                }
-                            ?>
 </div>
 </div>
+
 
 
   <footer>
@@ -223,7 +219,7 @@ $result = mysqli_query($connection , $sql);
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-          <p style="font-size: small;"><a href="../Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
+          <p style="font-size: small;"><a href="./Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
         </div>
         <div class="col-md-6 col-lg-3">
 

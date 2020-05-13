@@ -294,6 +294,12 @@ a:hover{
 
 font-weight: bold;
 font-family: monospace;
+}
 
+tr > td {
+
+  color: black; 
+  font-weight: bold; 
+  font-family: monospace;
 
 }

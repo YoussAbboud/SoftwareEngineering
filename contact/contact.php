@@ -1,5 +1,7 @@
-
-
+<?php
+session_start();
+ require("../connection/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +49,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.html" style="color: black;">
+          <?php if(isset($_SESSION['email']))
+      {
+        ?>
+  <a class="nav-link" href="../index2.php" style="color: black; ">
               Home </a>
+
+<?php } 
+
+      else
+      { ?>
+            <a class="nav-link" href="../index.php" style="color: black; ">
+              Home </a>
+      <?php } ?>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Shop/shop.php" style="color: black;"> Shop </a>
@@ -60,21 +73,21 @@
             </a>
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Para Medicals</a>
-              <a class="dropdown-item" href="#">Baby products</a>
-              <a class="dropdown-item" href="#">Baby Toiletries</a>
-              <a class="dropdown-item" href="#">Dental Products</a>
-              <a class="dropdown-item" href="#">Sport Nutrition</a>
-              <a class="dropdown-item" href="#">Cosmetics</a>
+              <a class="dropdown-item" href="../items/parameds.php">Para Medicals</a>
+              <a class="dropdown-item" href="../items/babyprods.php">Baby products</a>
+              <a class="dropdown-item" href="../items/babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item" href="../items/dental.php">Dental Products</a>
+              <a class="dropdown-item" href="../items/sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="../items/cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Supplements</a>
+              <a class="dropdown-item" href="../items/supplements.php">Supplements</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../about/about.html" style="color: black;"> About </a>
+            <a class="nav-link" href="../about/about.php" style="color: black;"> About </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" style="color: black;  font-weight: bold;"> Contact </a>
+            <a class="nav-link disabled" href="contact.php" style="color: black;  font-weight: bold;"> Contact </a>
           </li>
 
 
@@ -85,29 +98,7 @@
       
       
 
-<div class="container">
-
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <input type="search" placeholder="Search" style="font-family: Noto Sans;">
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="color: black">
-              <i class="fas fa-user" style="margin-top: 25px;"></i>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <input type="text" id="i-email" class="dropdown-item" placeholder="Email">
-              <input type="password" id="i-password" class="dropdown-item" placeholder="Password">
-            </div>
-          </li>
-        </ul>
-      </div>
-
-
-    </div>
+      
 
     </div>
 
@@ -120,7 +111,6 @@
   <?php 
 if(isset($_POST["submit"]))
 {
-  require 'phpmailer/PHPMailerAutoload.php';
 if(isset($_POST["message"]) && isset($_POST["email"]) && isset($_POST["name"]) && isset($_POST["subject"]))
 {
 $name = $_POST["name"];
@@ -181,10 +171,10 @@ else
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-8 mx-auto">
-        <p style="margin-top: 20px;"><iframe
+      <div class="col-lg-8 col-sm-2 mx-auto">
+        <p style="margin-top: 20px; border-radius: 5px ; margin-left:70px"><iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13211.645419030117!2d35.64317344001246!3d34.12301905285936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f5caa39f11045%3A0x92d1cc8bb2421051!2sRahbani%20-%20Pharmacy!5e0!3m2!1sen!2slb!4v1582541075982!5m2!1sen!2slb"
-            width="1150" height="600" frameborder="0" style="border:1;" allowfullscreen="1"></iframe></p>
+            width="1200" height="600" frameborder="0" style="border:1;" allowfullscreen="1"></iframe></p>
       </div>
     </div>
   </div>
@@ -198,17 +188,17 @@ else
 
           <div>
             <h3 class="footer-heading mb-4">About Us</h3>
-            <p>???</p>
+            <p style="font-family: 'Ubuntu', sans-serif;">Under Dr Rahbani’s leadership, Rahbani Pharmacy has been providing patients with professional counseling and unique treatment solutions since 1985. As it expanded and grew, people from all over Lebanon started purposely going to pharmacy Rahbani as it has it all & most importantly imports medicines that one cannot find in Lebanon.</p>
+         
           </div>
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Quick Links</h3>
           <ul class="list-unstyled">
-            <li><a href="#">Supplements</a></li>
-            <li><a href="#">Vitamins</a></li>
-            <li><a href="#">Medecine</a></li>
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="../Shop/shop.php">Shop</a></li>
+            <li><a href="../items/parameds.php">Para Medicals</a></li>
+            <li><a href="../index.php">Home</a></li>
           </ul>
         </div>
 
@@ -233,7 +223,7 @@ else
   
           </div>
           <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-            <p style="font-size: small;"><a href="../Privacy/Privacy.html" id="priv">Privacy Policies </a></p>
+            <p style="font-size: small;"><a href="../Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
           </div>
           <div class="col-md-6 col-lg-3">
   

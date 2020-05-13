@@ -1,3 +1,7 @@
+<?php
+session_start();
+ require("../connection/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,8 +28,9 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="js/homepage.js" type="text/javascript"></script>
+  <script src="../js/homepage.js" type="text/javascript"></script>
 
   <title>Pharmacy Rahbani</title>
 
@@ -44,8 +49,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.html" style="color: black; ">
+          <?php if(isset($_SESSION['email']))
+      {
+        ?>
+  <a class="nav-link" href="../index2.php" style="color: black; ">
               Home </a>
+
+<?php } 
+
+      else
+      { ?>
+            <a class="nav-link" href="../index.php" style="color: black; ">
+              Home </a>
+      <?php } ?> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Shop/shop.php" style="color: black;"> Shop </a>
@@ -57,18 +73,18 @@
             </a>
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Para Medicals</a>
-              <a class="dropdown-item" href="#">Baby products</a>
-              <a class="dropdown-item" href="#">Baby Toiletries</a>
-              <a class="dropdown-item" href="#">Dental Products</a>
-              <a class="dropdown-item" href="#">Sport Nutrition</a>
-              <a class="dropdown-item" href="#">Cosmetics</a>
+              <a class="dropdown-item" href="../items/parameds.php">Para Medicals</a>
+              <a class="dropdown-item" href="../items/babyprods.php">Baby products</a>
+              <a class="dropdown-item" href="../items/babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item" href="../items/dental.php">Dental Products</a>
+              <a class="dropdown-item" href="../items/sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="../items/cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Supplements</a>
+              <a class="dropdown-item" href="../items/supplements.php">Supplements</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" style="color: black; font-weight: bold;"> About </a>
+            <a class="nav-link disabled" href="about.php" style="color: black; font-weight: bold;"> About </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../contact/contact.php" style="color: black;"> Contact </a>
@@ -79,29 +95,7 @@
         </ul>
       </div>
 
-<div class="container">
-
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <input type="search" placeholder="Search" style="font-family: Noto Sans;">
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="color: black">
-              <i class="fas fa-user" style="margin-top: 25px;"></i>
-            </a>
-
-            <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <input type="text" id="i-email" class="dropdown-item" placeholder="Email">
-              <input type="password" id="i-password" class="dropdown-item" placeholder="Password">
-            </div>
-          </li>
-        </ul>
-      </div>
-
-
-    </div>
+      
 
     </div>
 
@@ -124,7 +118,7 @@
               <img class="d-block w-100" src="../img/random1.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="../img/random2.jpg" alt="Third slide">
+              <img class="d-block w-100" src="../img/inside5.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -147,132 +141,135 @@
       </div>
     </div>
     <div class="col-12" style="margin-top: 20px; margin-bottom: 20px;">
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque odio elit, volutpat sit amet augue ut,
-      tristique imperdiet est. Sed sodales leo sed est feugiat, non porta nisi volutpat.
-      Maecenas ac volutpat arcu. Sed est neque, mollis sit amet risus faucibus, maximus ultricies sapien. Donec congue
-      eget magna et placerat.
-      Aenean tristique ut quam sit amet semper. Nullam facilisis varius tristique. Sed vitae tortor aliquet orci
-      pharetra laoreet. Donec sem libero, interdum non urna eget, sagittis suscipit metus.
-      Aliquam consequat ipsum blandit mattis tempor. Donec ac lectus et libero tincidunt porta a in odio. Sed blandit
-      efficitur maximus. Suspendisse potenti.
-      Fusce ornare mauris ac velit tempus, aliquam mollis diam scelerisque. Mauris eget diam augue. Aliquam convallis
-      nunc sed congue finibus. Nulla convallis metus eget orci venenatis porta. Aenean pretium efficitur justo in
-      volutpat.
-      Aliquam leo urna, rutrum eget ipsum nec, semper aliquet sapien. Sed sollicitudin euismod tellus. Nullam ut ipsum
-      sed tortor vehicula lobortis id ac leo.
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        Founded in 1988, Pharmacy Rahbani has been the pharmacy to go to in its region. As it expanded and grew, people from all over Lebanon started purposely going to pharmacy Rahbani as it has it all & most importantly imports medicines that one cannot find in Lebanon.
+        Let’s talk about Dr. Sonia Rahbani, the founder and CEO of the pharmacy, as without her the pharmacy would cease to exist. </p>
+        <span></span>
+        <p style="font-family: 'Ubuntu', sans-serif;">Dr Sonia Rahbani is a seasoned pharmacist, an anti-aging doctor and an avid entrepreneur.
+        She is the founder and general manager of Rahbani Pharmacy, Rahbani Laser Clinics and Dermapro anti-aging center in Lebanon. She received her PharmD from St Joseph University, Lebanon and her PhD in anti-aging medicine from Institute of Bioregulation and Gerontology, St Petersburg under the direction of Professor Vladimir Khavinson. Dr Rahbani currently sits on the board of Directors of the World Council of Preventive Medicine (WOCPM) dedicated to the advancement and combination of preventive, regenerative and anti-aging medicine into one integrated clinical and holistic approach.</p>
+        <span></span>
+        <p style="font-family: 'Ubuntu', sans-serif;">Under Dr Rahbani’s leadership, Rahbani Pharmacy has been providing patients with professional counseling and unique treatment solutions since 1985. Rahbani Laser Clinics and Dermapro were inaugurated shortly after, introducing a new concept of wellbeing, global wellness and anti-aging care in Lebanon and the region. The group is fully committed to offering the most comprehensive range of treatments, and is continuously expanding and innovating in order to cater to its wide customer base by offering bespoke services tailored to individual needs.
+        To ensure customer’s satisfaction – key element in the success of her ventures – Dr Rahbani works closely with a dedicated strong and knowledgeable team of doctors, pharmacists, dieticians and cosmetic professionals. When asked about the mission that motivates her and her team, Dr Rahbani said “We are committed to the care and improvement of human life. We strive to deliver a complete range of high quality medical and wellness solutions to individuals of all ages because we understand the complex interactions of body, mind and soul as one”</p>
       </p>
     </div>
   </div>
   </div>
-
+  <h1 style="font-family: 'Archivo black'; font-weight: bold; color: black;">Our Team</h1>
   <div class="container" style="margin-top: 30px">
     <div class="row mx-auto">
-      <div class="col-3">
-        <div class="flip-card">
+      
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 100px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
+              <img src="../img/sonia.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
+
+              <span>Dr Sonia Rahbani</span>
+              <p>Ceo and owner of pharmacy rahbani & rahbani laser center dermapro</p>
+              <p></p>
+              <p>Pharmacist</p>
+              <span>Info: 03 637 937</span>
 
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card">
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 200px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:200px;height:200px;">
+              <img src="../img/maria.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
+
+              <span>Maria Souki</span>
+              <p>Upper Management</p>
+              <p></p>
+              <p>Pharma D</p>
+              <p></p>
+              <p>Pharmacist</p>
+              <span>Info: 03 686 770</span>
 
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card">
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 100px; margin-top: 10px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
+              <img src="../img/pamela.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-
+              <span>Pamela Antar</span>
+              <p>Accounting Manager</p>
+              <p></p>
+              <p>Accountant</p>
+              <span>Info: 03 965 117</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card" style="margin-top: 10px;">
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 200px;margin-top: 10px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
+              <img src="../img/hala.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
-
+              <span>Hala taysoun</span>
+              <p>Food sup Responsable</p>
+              <p></p>
+              <p>Pharma D</p>
+              <p></p>
+              <p>Pharmacist</p>
+              <span>Info: 03 335 334</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card" style="margin-top: 10px;">
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 100px;margin-top: 10px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
+              <img src="../img/elsy.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
-
+              <span>Elsy Gerges</span>
+              <p>Dietitian Manager</p>
+              <p></p>
+              <p>Dietitian</p>
+              <span>Info: 76 014 914</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card" style="margin-top: 10px;">
+      <div class="col-lg-6 col-sm-12">
+        <div class="flip-card" style="width:200px;height:200px; margin-left: 200px;margin-top: 10px;">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
+              <img src="../img/manal.jpg" alt="Avatar" style="border-radius: 5px;">
             </div>
             <div class="flip-card-back">
-
+              <span>Manal Malek</span>
+              <p>Dermatologist specialist</p>
+              <p></p>
+              <span>Info: 03 226 547</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-3">
-        <div class="flip-card" style="margin-top: 10px;">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
+     
 
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
+      
 
 
     </div>
@@ -288,17 +285,16 @@
 
           <div>
             <h3 class="footer-heading mb-4">About Us</h3>
-            <p>???</p>
+            <p style="font-family: 'Ubuntu', sans-serif;">Under Dr Rahbani’s leadership, Rahbani Pharmacy has been providing patients with professional counseling and unique treatment solutions since 1985. As it expanded and grew, people from all over Lebanon started purposely going to pharmacy Rahbani as it has it all & most importantly imports medicines that one cannot find in Lebanon.</p>
           </div>
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Quick Links</h3>
           <ul class="list-unstyled">
-            <li><a href="#">Supplements</a></li>
-            <li><a href="#">Vitamins</a></li>
-            <li><a href="#">Medecine</a></li>
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="./Shop/shop.php">Shop</a></li>
+            <li><a href="/items/parameds.php">Para Medicals</a></li>
+            <li><a href="./index.php">Home</a></li>
           </ul>
         </div>
 
@@ -323,7 +319,7 @@
   
           </div>
           <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-            <p style="font-size: small;"><a href="../Privacy/Privacy.html" id="priv">Privacy Policies </a></p>
+            <p style="font-size: small;"><a href="../Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
           </div>
           <div class="col-md-6 col-lg-3">
   

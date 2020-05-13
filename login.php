@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +24,12 @@
   <link rel="stylesheet" href="./css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:900&display=swap" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://kit.fontawesome.com/58f469af82.js" crossorigin="anonymous"></script>
-  <script src="js/homepage.js" type="text/javascript"></script>
+  <script src="./js/homepage.js" type="text/javascript"></script>
 
   <title>Pharmacy Rahbani</title>
 
@@ -47,7 +51,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link disabled" href="index.html" style="color: black; font-weight: bold;">
+            <a class="nav-link" href="index.php" style="color: black; font-weight: bold;">
               Home </a>
           </li>
           <li class="nav-item">
@@ -61,17 +65,17 @@
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="./items/parameds.php">Para Medicals</a>
-              <a class="dropdown-item" href="#">Baby products</a>
-              <a class="dropdown-item" href="#">Baby Toiletries</a>
-              <a class="dropdown-item" href="#">Dental Products</a>
-              <a class="dropdown-item" href="#">Sport Nutrition</a>
-              <a class="dropdown-item" href="#">Cosmetics</a>
+              <a class="dropdown-item" href="./items/babyprods.php">Baby products</a>
+              <a class="dropdown-item" href="./items/babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item" href="./items/dental.php">Dental Products</a>
+              <a class="dropdown-item" href="./items/sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="./items/cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Supplements</a>
+              <a class="dropdown-item" href="./items/supplements.php">Supplements</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./about/about.html" style="color: black;"> About </a>
+            <a class="nav-link" href="./about/about.php" style="color: black;"> About </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./contact/contact.php" style="color: black;"> Contact </a>
@@ -86,17 +90,36 @@
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
-            
+
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false" style="color: black">
                 <i class="fas fa-user" style="margin-top: 25px;"></i>
               </a>
+              <?php 
+              if(isset($_SESSION['lemail']) && isset($_SESSION['lpassword'])) 
+            {
+            ?>
+             
+             
 
-              <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                <input type="text" id="i-email" class="dropdown-item" placeholder="Email">
-                <input type="password" id="i-password" class="dropdown-item" placeholder="Password">
+             <form method='POST'>
+<div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" id="logout">Log Out</button>
               </div>
+              </fomr>
+
+
+
+
+<?php
+              }
+              ?>
+
+
+
+
+
             </li>
           </ul>
         </div>
@@ -112,28 +135,78 @@
     </div>
   </nav>
 
-  <div class="cover-container" >
+  <div class="cover-container">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-7 mx-auto order-lg-2 align-self-center" style="margin-top: 20px; background-image: url('img/inside3.jpeg'); height: 550px;">
-          <div class="cover-content text-center">
-            <h2 class="sub-title" style="font-family: 'Noto sans' ; font-weight: bold; margin-top: 190px;">Effective, Fast and Reliable
-              Everyday
-            </h2>
-            <h1 style="font-family: 'Noto Sans', sans-serif;">Welcome To Rahbani</h1>
-            <p>
-              <a href="./Shop/shop.php" class="btn btn-primary px-5 py-3">Shop Now</a>
-            </p>
-          </div>
+        <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+          
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+<ol class="carousel-indicators">
+  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+</ol>
+<div class="carousel-inner">
+
+  <div class="carousel-content">
+    <h3>
+    <h1 class="slogan col-sm-12 text-sm-left">Effective , Fast and Reliable</h1>
+    <h3 class="subslogan col-sm-12 text-sm-left"> Welcome to Rahbani <br>
+
+    </h3>
+  </div>
+  <div class="carousel-item active">
+    <img class="d-block w-100" src="./img/inside1.jpeg" alt="First slide">
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100" src="./img/inside2.jpeg" alt="Second slide">
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100 bmw-img" src="./img/inside3.jpeg" alt="Third slide">
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100 audi-img" src="./img/inside4.jpeg" alt="Fourth slide">
+  </div>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
+</div>
+
+
+
+
         </div>
-        <div class="col-lg-3 mx-auto order-lg-2 align-self-center">
+        <div class="col-lg-3 mx-auto order-lg-3 align-self-center" style="bachround-color: gray;">
+          <div class="container">
+            <div class="row">
 
+              
 
+                  <h3 style="font-family: 'Archivo black'">Log In:</h3>
+                
+                  
+               <input type="email" name="email" id="l-email" placeholder="Email">
+                <input type="password" name="password" id="l-password"  placeholder="Password">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" id="login_btt">Login</button>
+              
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
+  </form>
 
   <footer>
     <div class="container-fluid bg-light">
@@ -151,10 +224,9 @@
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Quick Links</h3>
           <ul class="list-unstyled">
-            <li><a href="#">Supplements</a></li>
-            <li><a href="#">Vitamins</a></li>
-            <li><a href="#">Medecine</a></li>
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="/Shop/shop.php">Shop</a></li>
+            <li><a href="/items/parameds.php">Para Medicals</a></li>
+            <li><a href="index.php">Home</a></li>
           </ul>
         </div>
 
@@ -179,8 +251,8 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
         </div>
-        <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-          <p style="font-size: small;"><a href="./Privacy/Privacy.html" id="priv">Privacy Policies </a></p>
+        <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+          <p style="font-size: small;"><a href="./Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
         </div>
         <div class="col-md-6 col-lg-3">
 

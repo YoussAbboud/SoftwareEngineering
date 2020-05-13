@@ -136,7 +136,7 @@ session_start();
 
 <?php
 
-$sql = 'SELECT id , descpt, brand, qty, price , logo FROM para_medicals';
+$sql = 'SELECT id , descpt, brand, qty, price , logo FROM sport_nutrition';
 $result = mysqli_query($connection , $sql);
 
 ?>
@@ -157,7 +157,7 @@ $result = mysqli_query($connection , $sql);
     <div class="card-body text-center">
         <tr>
             
-        <form method="POST" action="pitem.php">
+        <form method="POST" action="snitem.php">
         <input type=hidden name="itemid" value="<?php echo $rows['id']; ?>"/>
                       <?php echo $rows['descpt']; ?></br>
   

@@ -78,8 +78,8 @@ session_start();
               <a class="dropdown-item" href="parameds.php">Para Medicals</a>
               <a class="dropdown-item" href="babyprods.php">Baby products</a>
               <a class="dropdown-item" href="babytoils.php">Baby Toiletries</a>
-              <a class="dropdown-item" href="dental.php">Dental Products</a>
-              <a class="dropdown-item disabled" href="sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item disabled" href="dental.php">Dental Products</a>
+              <a class="dropdown-item" href="sportnut.php">Sport Nutrition</a>
               <a class="dropdown-item" href="cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="supplements.php">Supplements</a>
@@ -136,7 +136,7 @@ session_start();
 
 <?php
 
-$sql = 'SELECT id , descpt, brand, qty, price , logo FROM para_medicals';
+$sql = 'SELECT id , descpt, brand, qty, price , logo FROM dental_products';
 $result = mysqli_query($connection , $sql);
 
 ?>
@@ -157,7 +157,7 @@ $result = mysqli_query($connection , $sql);
     <div class="card-body text-center">
         <tr>
             
-        <form method="POST" action="pitem.php">
+        <form method="POST" action="ditem.php">
         <input type=hidden name="itemid" value="<?php echo $rows['id']; ?>"/>
                       <?php echo $rows['descpt']; ?></br>
   

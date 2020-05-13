@@ -1,4 +1,5 @@
 <?php
+session_start();
  require("../connection/connection.php");
 ?>
 <!DOCTYPE html>
@@ -47,8 +48,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" font-size: large;">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.html" style="color: black; ">
+<?php if(isset($_SESSION['email']))
+      {
+        ?>
+  <a class="nav-link" href="../index2.php" style="color: black; ">
               Home </a>
+
+<?php } 
+
+      else
+      { ?>
+            <a class="nav-link" href="../index.php" style="color: black; ">
+              Home </a>
+      <?php } ?>  
+
+
+
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" style="color: black; font-weight: bold;"> Shop </a>
@@ -61,17 +76,17 @@
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../items/parameds.php">Para Medicals</a>
-              <a class="dropdown-item" href="#">Baby products</a>
-              <a class="dropdown-item" href="#">Baby Toiletries</a>
-              <a class="dropdown-item" href="#">Dental Products</a>
-              <a class="dropdown-item" href="#">Sport Nutrition</a>
-              <a class="dropdown-item" href="#">Cosmetics</a>
+              <a class="dropdown-item" href="../items/babyprods.php">Baby products</a>
+              <a class="dropdown-item" href="../items/babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item" href="../items/dental.php">Dental Products</a>
+              <a class="dropdown-item" href="../items/sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="../items/cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Supplements</a>
+              <a class="dropdown-item" href="../items/supplements.php">Supplements</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../about/about.html" style="color: black;"> About </a>
+            <a class="nav-link" href="../about/about.php" style="color: black;"> About </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../contact/contact.php" style="color: black;"> Contact </a>
@@ -82,29 +97,10 @@
         </ul>
       </div>
 
-<div class="container">
-
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <input type="search" placeholder="Search" style="font-family: Noto Sans;">
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="color: black">
-              <i class="fas fa-user" style="margin-top: 25px;"></i>
-            </a>
-
-            <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <input type="text" id="i-email" class="dropdown-item" placeholder="Email">
-              <input type="password" id="i-password" class="dropdown-item" placeholder="Password">
-            </div>
-          </li>
-        </ul>
-      </div>
+      <div class="container">
 
 
-    </div>
+</div>
 
     </div>
 
@@ -115,7 +111,7 @@
   </nav>
 
 <?php
- $sql7 = 'SELECT descpt, brand, qty, price FROM para_medicals ORDER BY RAND()';
+ $sql7 = 'SELECT descpt, brand, qty, price , logo FROM para_medicals ORDER BY RAND()';
 
  $result7 = mysqli_query($connection , $sql7);
 
@@ -137,16 +133,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 5; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows7 = mysqli_fetch_assoc($result7)
-                        
-                          ?>
-          
-  <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 180px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
-  
+          $rows7 = mysqli_fetch_assoc($result7);
+          $image_fields =  trim($rows7['logo']);
+          $image_show = "../img/$image_fields"
+             ?>
+
+<div class="column">
+ <div class="card text-center" style="height: 350px ; width: 130px ; margin-bottom: 20px; margin-left: 30px">
+ <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 130px ; width: 125px">
                   <div class="card-body text-center">
                       <tr>
                           
@@ -179,12 +175,12 @@
   <?php 
  
 
-  $sql = 'SELECT descpt, brand, qty, price FROM baby_products ORDER BY RAND()';
-  $sql2 = 'SELECT descpt, brand, qty, price FROM baby_toiletries ORDER BY RAND()';
-  $sql3 = 'SELECT descpt, brand, qty, price FROM cosmetics ORDER BY RAND()';
-  $sql4 = 'SELECT descpt, brand, qty, price FROM dental_products ORDER BY RAND()';
-  $sql5 = 'SELECT descpt, brand, qty, price FROM sport_nutrition ORDER BY RAND()';
-  $sql6 = 'SELECT descpt, brand, qty, price FROM supplements ORDER BY RAND()';
+  $sql = 'SELECT descpt, brand, qty, price , logo FROM baby_products ORDER BY RAND()';
+  $sql2 = 'SELECT descpt, brand, qty, price , logo FROM baby_toiletries ORDER BY RAND()';
+  $sql3 = 'SELECT descpt, brand, qty, price , logo FROM cosmetics ORDER BY RAND()';
+  $sql4 = 'SELECT descpt, brand, qty, price , logo FROM dental_products ORDER BY RAND()';
+  $sql5 = 'SELECT descpt, brand, qty, price , logo FROM sport_nutrition ORDER BY RAND()';
+  $sql6 = 'SELECT descpt, brand, qty, price ,logo FROM supplements ORDER BY RAND()';
   
   $result1 = mysqli_query($connection , $sql);
   $result2 = mysqli_query($connection , $sql2);
@@ -203,15 +199,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 8; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows = mysqli_fetch_assoc($result1)
-                        
+          $rows = mysqli_fetch_assoc($result1);
+                       $image_fields =  trim($rows['logo']);
+                       $image_show = "../img/$image_fields"
                           ?>
           
   <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
+              <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+              <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                       <tr>
@@ -242,15 +239,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 8; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows3 = mysqli_fetch_assoc($result3)
-                        
+          $rows3 = mysqli_fetch_assoc($result3);
+          $image_fields =  trim($rows3['logo']);
+                       $image_show = "../img/$image_fields"
                           ?>
           
   <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
+              <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+              <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                       <tr>
@@ -281,16 +279,16 @@
       <div class="container-fluid">
       <div class="row">
       <?php    
-      for ($i = 0; $i <= 8; $i++)
+      for ($i = 0; $i <= 3; $i++)
         {
- $rows2 = mysqli_fetch_assoc($result2)
-                                  
-                          
-                          ?>
-          
-  <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="../img/inside2.jpg" alt="Card image">
+ $rows2 = mysqli_fetch_assoc($result2);
+ $image_fields =  trim($rows2['logo']);
+ $image_show = "../img/$image_fields"
+    ?>
+
+<div class="column">
+<div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+<img class="card-img-top align-center" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                     <form action="./cars3.php" method="POST">
@@ -328,15 +326,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 8; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows4 = mysqli_fetch_assoc($result4)
-                        
-                          ?>
-          
-  <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
+          $rows4 = mysqli_fetch_assoc($result4);
+          $image_fields =  trim($rows4['logo']);
+          $image_show = "../img/$image_fields"
+             ?>
+
+<div class="column">
+ <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+ <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                       <tr>
@@ -368,15 +367,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 8; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows5 = mysqli_fetch_assoc($result5)
-                        
-                          ?>
-          
-  <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
+          $rows5 = mysqli_fetch_assoc($result5);
+          $image_fields =  trim($rows5['logo']);
+          $image_show = "../img/$image_fields"
+             ?>
+
+<div class="column">
+ <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+ <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                       <tr>
@@ -408,15 +408,16 @@
       <div class="container-fluid">
       <div class="row">
           <?php
-          for ($i = 0; $i <= 8; $i++)
+          for ($i = 0; $i <= 3; $i++)
           {
-          $rows6 = mysqli_fetch_assoc($result6)
-                        
-                          ?>
-          
-  <div class="column">
-              <div class="card text-center" style="height: 200px ; width: 170px ; margin-bottom: 20px; margin-left: 15px">
-              <img class="card-img-top" src="./img/inside2.jpg" alt="Card image">
+          $rows6 = mysqli_fetch_assoc($result6);
+          $image_fields =  trim($rows6['logo']);
+          $image_show = "../img/$image_fields"
+             ?>
+
+<div class="column">
+ <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+ <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 150px ; width: 200px ; margin-left: 15px ; margin-top: 10px">
   
                   <div class="card-body text-center">
                       <tr>
@@ -458,17 +459,17 @@
 
           <div>
             <h3 class="footer-heading mb-4">About Us</h3>
-            <p>???</p>
+            <p style="font-family: 'Ubuntu', sans-serif;">Under Dr Rahbani’s leadership, Rahbani Pharmacy has been providing patients with professional counseling and unique treatment solutions since 1985. As it expanded and grew, people from all over Lebanon started purposely going to pharmacy Rahbani as it has it all & most importantly imports medicines that one cannot find in Lebanon.</p>
+         
           </div>
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Quick Links</h3>
           <ul class="list-unstyled">
-            <li><a href="#">Supplements</a></li>
-            <li><a href="#">Vitamins</a></li>
-            <li><a href="#">Medecine</a></li>
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="shop.php">Shop</a></li>
+            <li><a href="../items/parameds.php">Para Medicals</a></li>
+            <li><a href="../index.php">Home</a></li>
           </ul>
         </div>
 
@@ -493,7 +494,7 @@
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-          <p style="font-size: small;"><a href="./Privacy/Privacy.html" id="priv">Privacy Policies </a></p>
+          <p style="font-size: small;"><a href="./Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
         </div>
         <div class="col-md-6 col-lg-3">
 
