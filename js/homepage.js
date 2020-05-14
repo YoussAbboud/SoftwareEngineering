@@ -537,12 +537,12 @@ var reserved_id = $("#item_id").val();
           console.log(data);
           if(data == "error")
           {
-              alert("Customer Already Exists");
+              alert("Error in Fields");
               window.location.replace("admin.php");
           }
           else if(data == "true")
           {
-              alert("Added Successfully!");
+              alert("Removed Successfully!");
               window.location.replace("admin.php");
           }
           else if(data == "noemp")
