@@ -76,7 +76,7 @@ session_start();
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./about/about.php" style="color: black;"> About </a>
+            <a class="nav-link" href="./about/about.php" style="color: black;"> About us </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./contact/contact.php" style="color: black;"> Contact </a>
