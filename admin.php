@@ -175,15 +175,6 @@ if(!isset($_SESSION["admin"]))
     <div class="container">
     <div class="row">
     <h3 style="font-family: 'Archivo black' ; margin-top: 10px">Remove an Employee:</h3>
-<div class="col-lg-12">
-<input type="name" name="first" id="remove-first" placeholder="First Name" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removefirst()" type="button" id="add_btt">Remove by First</button>
-</div>
-
-<div class="col-lg-12">
-<input type="name" name="last" id="remove-last" placeholder="Last Name" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removelast()" type="button" id="add_btt">Remove by Last</button>
-</div>
 
 <div class="col-lg-12">
 <input type="tel" name="nbr" id="remove-nbr" placeholder="Phone Number" style="font-family: 'Lato'">
@@ -194,6 +185,13 @@ if(!isset($_SESSION["admin"]))
 <input type="email" name="email" id="remove-nbr" placeholder="Email" style="font-family: 'Lato'">
 <button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removeemail()" type="button" id="add_btt">Remove by Email</button>
 </div>
+<h3 style="font-family: 'Archivo black' ; margin-top: 10px">Remove a Customer:</h3>
+    <div class="col-lg-12">
+<input type="email" name="email" id="remove-cemail" placeholder="Email" style="font-family: 'Lato'">
+<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removecemail()" type="button" id="add_btt">Remove by Email</button>
+
+    </div>
+
     </div>
     </div> 
 </div>
@@ -240,32 +238,6 @@ if(!isset($_SESSION["admin"]))
 
 </div>
 
-<div class="col-lg-3">
-    <div class="container">
-    <div class="row">
-    <h3 style="font-family: 'Archivo black' ; margin-top: 10px">Remove a Customer:</h3>
-<div class="col-lg-12">
-<input type="name" name="first" id="remove-cfirst" placeholder="First Name" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removecfirst()" type="button" id="add_btt">Remove by First</button>
-</div>
-
-<div class="col-lg-12">
-<input type="name" name="last" id="remove-clast" placeholder="Last Name" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removeclast()" type="button" id="add_btt">Remove by Last</button>
-</div>
-
-<div class="col-lg-12">
-<input type="password" name="nbr" id="remove-cpass" placeholder="Password" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removecpass()" type="button" id="add_btt">Remove by Phone Number</button>
-</div>
-
-<div class="col-lg-12">
-<input type="email" name="email" id="remove-cemail" placeholder="Email" style="font-family: 'Lato'">
-<button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removecemail()" type="button" id="add_btt">Remove by Email</button>
-</div>
-    </div>
-    </div> 
-</div>
 
 
 

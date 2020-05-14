@@ -351,71 +351,9 @@ var reserved_id = $("#item_id").val();
     });
   }
 
-  function removefirst(){
-    
-    var remove_firstname = $("#remove-first").val();
+ 
 
-
-    $.ajax({
-      url: "./verification/remove.php",
-      data: {
-        "remove_firstname":remove_firstname,
-        
-      },
-      type: "POST",
-      success: function(data){
-          console.log(data);
-          if(data == "error")
-          {
-              alert("Employee Already Exists");
-              window.location.replace("admin.php");
-          }
-          else if(data == "true")
-          {
-              alert("Added Successfully!");
-              window.location.replace("admin.php");
-          }
-          else if(data == "noemp")
-          {
-            alert("No Employee");
-            window.location.replace("admin.php");
-          }
-        }
-    });
-  }
-
-  function removelast(){
-    
-    var remove_firstname = $("#remove-last").val();
-
-
-    $.ajax({
-      url: "./verification/remove.php",
-      data: {
-        "remove_lastname":remove_lastname,
-        
-      },
-      type: "POST",
-      success: function(data){
-          console.log(data);
-          if(data == "error")
-          {
-              alert("Error in Fields");
-              window.location.replace("admin.php");
-          }
-          else if(data == "true")
-          {
-              alert("Removed Successfully!");
-              window.location.replace("admin.php");
-          }
-          else if(data == "noemp")
-          {
-            alert("No Employee");
-            window.location.replace("admin.php");
-          }
-        }
-    });
-  }
+  
 
   function removeNbr(){
     
@@ -521,71 +459,9 @@ var reserved_id = $("#item_id").val();
     });
   }
 
-  function removecfirst(){
-    
-    var remove_cfirstname = $("#remove-cfirst").val();
+  
 
-
-    $.ajax({
-      url: "./verification/removecustomer.php",
-      data: {
-        "remove_firstname":remove_cfirstname,
-        
-      },
-      type: "POST",
-      success: function(data){
-          console.log(data);
-          if(data == "error")
-          {
-              alert("Error in Fields");
-              window.location.replace("admin.php");
-          }
-          else if(data == "true")
-          {
-              alert("Removed Successfully!");
-              window.location.replace("admin.php");
-          }
-          else if(data == "noemp")
-          {
-            alert("No Customer Found");
-            window.location.replace("admin.php");
-          }
-        }
-    });
-  }
-
-  function removeclast(){
-    
-    var remove_clast = $("#remove-clast").val();
-
-
-    $.ajax({
-      url: "./verification/removecustomer.php",
-      data: {
-        "remove_lastname":remove_clast,
-        
-      },
-      type: "POST",
-      success: function(data){
-          console.log(data);
-          if(data == "error")
-          {
-              alert("Customer Already Exists");
-              window.location.replace("admin.php");
-          }
-          else if(data == "true")
-          {
-              alert("Added Successfully!");
-              window.location.replace("admin.php");
-          }
-          else if(data == "noemp")
-          {
-            alert("No Customer Found");
-            window.location.replace("admin.php");
-          }
-        }
-    });
-  }
+  
 
   function removecemail(){
     
@@ -620,38 +496,6 @@ var reserved_id = $("#item_id").val();
     });
   }
 
-  function removecpass(){
-    
-    var remove_cpass = $("#remove-cpass").val();
-
-
-    $.ajax({
-      url: "./verification/removecustomer.php",
-      data: {
-        "remove_pass":remove_cpass,
-        
-      },
-      type: "POST",
-      success: function(data){
-          console.log(data);
-          if(data == "error")
-          {
-              alert("Customer Already Exists");
-              window.location.replace("admin.php");
-          }
-          else if(data == "true")
-          {
-              alert("Added Successfully!");
-              window.location.replace("admin.php");
-          }
-          else if(data == "noemp")
-          {
-            alert("No Customer Found");
-            window.location.replace("admin.php");
-          }
-        }
-    });
-  }
 
   function additem(){
     
@@ -728,16 +572,16 @@ var reserved_id = $("#item_id").val();
 
   function updtbtt(){
 
-    var first_name = $("#e-first").val();
-    var last_name = $("#e-last").val();
+    var phone_nbr = $("#e-nbr").val();
     var new_email = $("#e-newemail").val();
     var new_phonenumber = $("#e-newnbr").val();
     
       $.ajax({
-        url: "../verification/reservationbp.php",
+        url: "../verification/update.php",
         data: {
           "firstname": first_name,
           "lastname":last_name,
+          "phone-nbr":phone_nbr,
           "n-email":new_email,
           "n-nbr":new_phonenumber,
         },

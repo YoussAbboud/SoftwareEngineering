@@ -8,47 +8,9 @@ if(!array_filter($_POST))
 }
 
 
-if(isset($_POST["remove_firstname"]))
-{
-
-    $first = $_POST["remove_firstname"];
-
-    $sql = "SELECT first_name FROM employees WHERE first_name = '$first'";
-    $result = $connection->query($sql);
-    
-    if($result->num_rows == 0)
-    {
-        die("noemp");
-    }
-
-    $sql2 = "DELETE FROM employees WHERE first_name = '$first'"; 
-    mysqli_query($connection , $sql2);
-    die("true");
-    
-}
 
 
-else if(isset($_POST["remove_lastname"]))
-{
-
-    $last = $_POST["remove_lastname"];
-
-
-    $sql3 = "SELECT first_name FROM employees WHERE last_name = '$last'";
-    $result = $connection->query($sql3);
-    
-    if($result->num_rows == 0) 
-    {
-        die("noemp");
-    }
-
-    $sql4 = "DELETE FROM employees WHERE last_name = '$last'"; 
-    mysqli_query($connection , $sql4);
-    die("true");
-
-}
-
-else if(isset($_POST["remove_Nbr"]))
+if(isset($_POST["remove_Nbr"]))
 {
 
     $Nbr = $_POST["remove_Nbr"];
