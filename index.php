@@ -210,8 +210,8 @@ session_start();
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
           <h3 class="footer-heading mb-4">Quick Links</h3>
           <ul class="list-unstyled">
-            <li><a href="/Shop/shop.php">Shop</a></li>
-            <li><a href="/items/parameds.php">Para Medicals</a></li>
+            <li><a href="./Shop/shop.php">Shop</a></li>
+            <li><a href="./items/parameds.php">Para Medicals</a></li>
             <li><a href="index.php">Home</a></li>
           </ul>
         </div>

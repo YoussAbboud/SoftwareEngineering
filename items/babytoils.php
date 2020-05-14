@@ -154,7 +154,7 @@ $result = mysqli_query($connection , $sql);
                                      ?>    
                         <div class="col-lg-3 col-sm-4">
 
-                        <div class="card text-center" style="height: 350px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+                        <div class="card text-center" style="height: 390px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
                         <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 170px ; width: 190px ; margin-left: 15px ; margin-top: 10px">
 
     <div class="card-body text-center">

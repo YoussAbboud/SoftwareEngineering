@@ -156,7 +156,7 @@ $result = mysqli_query($connection , $sql);
 
 ?>
 
-<div class="col-lg-4">
+<div class="col-lg-6">
       <div class="container-fluid">
       <div class="row">
       <?php while($rows = mysqli_fetch_assoc($result))
