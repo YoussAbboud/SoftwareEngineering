@@ -103,6 +103,7 @@ session_start();
 
         </ul>
       </div>
+
       <?php if(isset($_SESSION["email"]))
 { ?>
     <li class="nav-item dropdown">
@@ -111,7 +112,6 @@ session_start();
       </a>
     </li>
     <?php } ?>
-      
 
     </div>
 
@@ -149,42 +149,64 @@ session_start();
 
 <?php
 
-$i_id = $_POST['itemid'];
-
-$sql = "SELECT * FROM dental_products WHERE id = $i_id";
+$sql = 'SELECT res_id , item_id , cust_id FROM reservations';
 $result = mysqli_query($connection , $sql);
+
+
 
 ?>
 
-      <?php $rows = mysqli_fetch_assoc($result);
-                                
-                                  $image_fields =  trim($rows['logo']);
-                                  $image_show = "../img/$image_fields"
+<div class="col-lg-4">
+      <div class="container-fluid">
+      <div class="row">
+      <?php while($rows = mysqli_fetch_assoc($result))
+                                {
+                                  $image_fields = "";
+                                  $image_show = "../img/$image_fields";
+                                  $id = $rows['cust_id'];
+
+                                  $sql2 = "SELECT c_email , f_name , l_name FROM customer WHERE cust_id = '$id'";
+                                  $result2 = mysqli_query($connection , $sql2);
+                                  $rows2 = mysqli_fetch_assoc($result2)
+
                                      ?>    
                         <div class="col-lg-3 col-sm-4">
 
-                        <div class="card text-center" style="height: 400px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
-                        <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 170px ; width: 190px ; margin-left: 15px ; margin-top: 10px">
+                        <div class="card text-center" style="height: 300px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
+                        
 
     <div class="card-body text-center">
         <tr>
             
         
-        <input type=hidden name="itemid" id="item_id" value="<?php echo $rows['id']; ?>"/>
-                      <?php echo $rows['descpt']; ?></br>
-  
-                          <td><?php echo $rows['brand']?></td></br>
-                          <td>Quantity:</t> <?php echo $rows['qty'] ?></td></br>
-                          <td>Price: </t><?php echo $rows['price'] ?></td> LBP</br>
-                          <td><button class="btn" onClick="reservation_d()">Reserve</button></td>
+                          <td>Reservation Id:</t><?php echo $rows['res_id']?></td></br>
+                          <td>Item Id:</t> <?php echo $rows['item_id'] ?></td></br>
+                          <p>Reserved By:</p>
+                          <span></span>
+                          <td>First Name:</t> <?php echo $rows2['f_name']?></td></br>
+                          <td>Last Name:</t> <?php echo $rows2['l_name'] ?></td></br>
+                          <td>Email: </t><?php echo $rows2['c_email'] ?></td></br>
                                
                         </tr>
-                                               
+                        
     </div>
 </div>
 </div>
+<?php
+                                }
+                            ?>
 </div>
 </div>
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
 
 
 
@@ -233,7 +255,7 @@ $result = mysqli_query($connection , $sql);
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-          <p style="font-size: small;"><a href="./Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
+          <p style="font-size: small;"><a href="../Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
         </div>
         <div class="col-md-6 col-lg-3">
 

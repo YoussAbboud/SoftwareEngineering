@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION["admin"]))
+{
+    echo "Access not authorized.";
+    exit();
+}
  require("../connection/connection.php");
 ?>
 <!DOCTYPE html>
@@ -26,23 +31,20 @@ session_start();
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="https://kit.fontawesome.com/58f469af82.js" crossorigin="anonymous"></script>
   <script src="../js/homepage.js" type="text/javascript"></script>
 
-  <title>Pharmacy Rahbani</title>
+  <title>Admin</title>
 
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div class="container">
-      <a class="navbar-brand mx-auto" href="#"
-        style="color: black; font-weight: bold; font-family: 'Roboto', sans-serif; font-size: 25px;"> <img
-          src="../img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand mx-auto" href="#" style="color: black; font-weight: bold; font-family: 'Roboto', sans-serif; font-size: 25px;"> <img src="../img/logo.png" alt="logo" height="42" width="42" id="img1"> Rahbani</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
@@ -63,26 +65,26 @@ session_start();
       { ?>
             <a class="nav-link" href="../index.php" style="color: black; ">
               Home </a>
-      <?php } ?>
+      <?php } ?>  
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Shop/shop.php" style="color: black;"> Shop </a>
+            <a class="nav-link disabled" href="../Shop/shop.php" style="color: black; font-weight: bold;"> Shop </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" style="color: black ; font-weight: bold;">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="color: black">
               Items
             </a>
 
             <div class="dropdown-content dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="parameds.php">Para Medicals</a>
-              <a class="dropdown-item" href="babyprods.php">Baby products</a>
-              <a class="dropdown-item" href="babytoils.php">Baby Toiletries</a>
-              <a class="dropdown-item" href="dental.php">Dental Products</a>
-              <a class="dropdown-item" href="sportnut.php">Sport Nutrition</a>
-              <a class="dropdown-item" href="cosmetics.php">Cosmetics</a>
+              <a class="dropdown-item" href="../items/parameds.php">Para Medicals</a>
+              <a class="dropdown-item" href="../items/babyprods.php">Baby products</a>
+              <a class="dropdown-item" href="../items/babytoils.php">Baby Toiletries</a>
+              <a class="dropdown-item" href="../items/dental.php">Dental Products</a>
+              <a class="dropdown-item" href="../items/sportnut.php">Sport Nutrition</a>
+              <a class="dropdown-item" href="../items/cosmetics.php">Cosmetics</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="supplements.php">Supplements</a>
+              <a class="dropdown-item" href="../items/supplements.php">Supplements</a>
             </div>
           </li>
           <li class="nav-item">
@@ -103,7 +105,12 @@ session_start();
 
         </ul>
       </div>
-      <?php if(isset($_SESSION["email"]))
+
+      <div class="container">
+
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+  <ul class="navbar-nav ml-auto">
+  <?php if(isset($_SESSION["email"]))
 { ?>
     <li class="nav-item dropdown">
       <a class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" style="color: black">
@@ -111,87 +118,56 @@ session_start();
       </a>
     </li>
     <?php } ?>
-      
+    
+  </ul>
+</div>
+
+
+</div>
 
     </div>
 
-
+    
 
     </div>
     </div>
   </nav>
-<div class="container-fluid" style="border-radius: 5px ; margin-bottom: 30px ; margin-top: 15px">
-    <div class="row">
-        <div class="col-lg-6 col-sm-2" >
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="../img/unnamed.jpg" alt="First slide"  style="border-radius: 5px">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../img/inside5.jpg" alt="Second slide"  style="border-radius: 5px">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="../img/random1.jpg" alt="Third slide"  style="border-radius: 5px">
+ 
+  <div class="container">
+  <div class="row">
+<div class="col-lg-12 col-sm-12">
+
+<div class="container">
+            <div class="row">
+
+                <h3 style="font-family: 'Archivo black' ; margin-top: 10px">Remove Item:</h3>
+                
+                <div class="col-lg-12">
+                  <input  name="product" id="product" placeholder="Product" style="font-family: 'Lato'">
+                  <input name="brand" id="brand" placeholder="Brand">
+                </div>
+                <div class="col-lg-12">
+                  <input name="Descrpt" id="desct" placeholder="Description">
+                </div>
+                <div class="col-lg-12">
+                  <input type="tel" pattern="[0-9]{10}" name="price" id="price" placeholder="Price">
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-lg btn-primary btn-block text-uppercase" onClick="removeitem()" type="button" id="add_btt">Remove Item</button>
+                </div>
+
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+
 </div>
-
-
-<?php
-
-$i_id = $_POST['itemid'];
-
-$sql = "SELECT * FROM dental_products WHERE id = $i_id";
-$result = mysqli_query($connection , $sql);
-
-?>
-
-      <?php $rows = mysqli_fetch_assoc($result);
-                                
-                                  $image_fields =  trim($rows['logo']);
-                                  $image_show = "../img/$image_fields"
-                                     ?>    
-                        <div class="col-lg-3 col-sm-4">
-
-                        <div class="card text-center" style="height: 400px ; width: 230px ; margin-bottom: 20px; margin-left: 15px">
-                        <img class="card-img-top" src="<?php echo($image_show) ?>" alt="Card image" style="height: 170px ; width: 190px ; margin-left: 15px ; margin-top: 10px">
-
-    <div class="card-body text-center">
-        <tr>
-            
-        
-        <input type=hidden name="itemid" id="item_id" value="<?php echo $rows['id']; ?>"/>
-                      <?php echo $rows['descpt']; ?></br>
-  
-                          <td><?php echo $rows['brand']?></td></br>
-                          <td>Quantity:</t> <?php echo $rows['qty'] ?></td></br>
-                          <td>Price: </t><?php echo $rows['price'] ?></td> LBP</br>
-                          <td><button class="btn" onClick="reservation_d()">Reserve</button></td>
-                               
-                        </tr>
-                                               
-    </div>
-</div>
-</div>
-</div>
-</div>
-
+  </div>
+  </div>
 
 
   <footer>
     <div class="container-fluid bg-light">
-
-      <div class="row mx-auto" style="padding-top: 40px;">
+        
+      <div class="row  ml-auto" >
 
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 
@@ -207,11 +183,25 @@ $result = mysqli_query($connection , $sql);
           <ul class="list-unstyled">
             <li><a href="../Shop/shop.php">Shop</a></li>
             <li><a href="parameds.php">Para Medicals</a></li>
-            <li><a href="../index.php">Home</a></li>
+            <li>
+            <?php if(isset($_SESSION['email']))
+      {
+        ?>
+  <a class="nav-link" href="../index2.php" style="color: black; ">
+              Home </a>
+
+<?php } 
+
+      else
+      { ?>
+            <a class="nav-link" href="../index.php" style="color: black; ">
+              Home </a>
+      <?php } ?>
+            </li>
           </ul>
         </div>
 
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3" >
           <div class="block-5 mb-5">
             <h3 class="footer-heading mb-4">Contact Info</h3>
             <ul class="list-unstyled">
@@ -223,8 +213,7 @@ $result = mysqli_query($connection , $sql);
 
 
         </div>
-
-      </div>
+    
     </div>
 
     <div class="container-fluid bg-light">
@@ -233,14 +222,15 @@ $result = mysqli_query($connection , $sql);
 
         </div>
         <div class="col-lg-3 mx-auto mb-5 mb-lg-0" >
-          <p style="font-size: small;"><a href="./Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
+          <p style="font-size: small;"><a href="../Privacy/Privacy.php" id="priv">Privacy Policies </a></p>
         </div>
         <div class="col-md-6 col-lg-3">
 
         </div>
       </div>
     </div>
-  </footer>
+</footer>
+
 
 
 

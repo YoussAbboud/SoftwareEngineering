@@ -29,7 +29,7 @@ session_start();
   <link href="https://fonts.googleapis.com/css?family=Lato:900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="js/homepage.js" type="text/javascript"></script>
+  <script src="../js/homepage.js" type="text/javascript"></script>
 
   <title>Pharmacy Rahbani</title>
 
@@ -94,12 +94,28 @@ session_start();
 
 
 
+          <?php if(isset($_SESSION["admin"]))
+          {
+
+          ?>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.php" style="color: black;"> Admin </a>
+          </li>
+<?php } ?>
+
         </ul>
       </div>
 
       <div class="container">
 
-
+      <?php if(isset($_SESSION["email"]))
+{ ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" style="color: black">
+      <button class="btn" onClick="logout2()">Log Out</button> 
+      </a>
+    </li>
+    <?php } ?>
 </div>
 
     </div>

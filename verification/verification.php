@@ -2,8 +2,12 @@
 session_start();
 require("../connection/connection.php");
 
+$email = $_POST["email"];
+
 if($_POST["email"] == "sonia@admin.com" && $_POST["password"] == "admin")
 {
+    $_SESSION["admin"] = "admin";
+    $_SESSION["email"] = $email;
     die("admin");
 }
 
@@ -19,7 +23,7 @@ if(!isset($_POST["email"]) || !isset($_POST["password"]))
 
 else;
 {
-    $email = $_POST["email"];
+    
     $pass = $_POST["password"];
 
     $sql = $connection->prepare("SELECT c_pass,c_email FROM customer WHERE c_email = ? AND c_pass = ?");

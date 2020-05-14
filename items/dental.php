@@ -92,12 +92,26 @@ session_start();
             <a class="nav-link" href="../contact/contact.php" style="color: black;"> Contact </a>
           </li>
 
+          <?php if(isset($_SESSION["admin"]))
+          {
 
+          ?>
+          <li class="nav-item">
+            <a class="nav-link" href="../admin.php" style="color: black;"> Admin </a>
+          </li>
+<?php } ?>
 
         </ul>
       </div>
 
-      
+      <?php if(isset($_SESSION["email"]))
+{ ?>
+    <li class="nav-item dropdown">
+      <a class="nav-link" role="button" aria-haspopup="true" aria-expanded="false" style="color: black">
+      <button class="btn" onClick="logout2()">Log Out</button> 
+      </a>
+    </li>
+    <?php } ?>
 
     </div>
 
